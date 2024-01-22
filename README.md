@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+### Before Getting Started
+There are two different branches associated with this lesson.
+- Main
+  - This branch provides the base notes of material not filled out.
+- Completed
+  - This branch includes all the added notes for you to review and compare with your own code-along.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Topics Covered
+- MovieEdit
+  - useParams() & useNavigate()
+- Logout
+  - `localStorage.removeItem()`
 
-## Available Scripts
+### What Should Already Be Understood
+- Creating a React Application
+  - File / Folder structure
+- Reusable Components
+- Props 
+- useState, useRef, useEffect
+- localstorage
+- React-Router-DOM
+- HandleSubmit
 
-In the project directory, you can run:
+## Files / Folders Provided in this Lesson
+This project is meant to build upon **Part 1** lecture. Building out a new project will require the previous code in order to function correctly. Creating a new application will also require the install of `reactstrap` and `bootstrap`. 
+- `npm install reactstrap react react-dom`
+- `npm install --save bootstrap`
+- `npm i react-router-dom`
+  - review [index.js](./src/index.js) and 
+    - `import 'bootstrap/dist/css/bootstrap.min.css';`
+    - `import {BrowserRouter} from 'react-router-dom;` and update `const root`
+```js 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>  // <-- ADDED
+      <App />
+    </BrowserRouter>  // <-- ADDED
+  </React.StrictMode>
+);
+```
 
-### `npm start`
+**Running:**
+- You will need to start up **MongoDB** and your **Movie Server**. Navigate to your server project within the terminal and run `nodemon` or `npm start` and have your server going while building the Movie application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- movies
+  - src
+    - components
+      - auth
+      - movie
+        - MovieIndex.jsx (mounted MovieTable component / Building within this)
+        - MovieCreate.jsx
+        - MovieTable.jsx (working wthin this)
+    - `App.jsx`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Additional Notes:
+# useParams()
+- Comes from React-Route-DOM
+  - Considers the `path` provided within the `<Route>` in `App.jsx`.
+  - Recognizes the `:id` as a parameter value in which to respond.
+  - We are able to access the key of `id` much in the same way we did with the server.
 
-### `npm test`
+# useNavigate()
+- Comes from React-Router-DOM
+  - Simply helps us move from one endpoint to another as we desire.
+  - Must pass in the path as an argument
+ex:
+```jsx
+navigate('/sample-endpoint');
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Resources
+- [Reactstrap Docs](https://reactstrap.github.io/?path=/docs/components-forms--input#hidden-labels)
+- [Bootstrap Grid](https://getbootstrap.com/docs/5.3/layout/grid/)
+- [w3Schools useRef](https://www.w3schools.com/react/react_useref.asp)
+- [Hook API Reference React](https://reactjs.org/docs/hooks-reference.html#useref)
+- [NPM Cors Package](https://www.npmjs.com/package/cors)
+- [setItem()](https://www.w3schools.com/jsref/met_storage_setitem.asp)
+- [React Router Docs](https://reactrouter.com/en/main)
+- [Browser-Router](https://reactrouter.com/en/main/router-components/browser-router)
+- [Route](https://reactrouter.com/en/main/route/route)
+- [Navigate](https://reactrouter.com/en/main/components/navigate)
+- [w3Schools useEffect](https://www.w3schools.com/react/react_useeffect.asp)
+- [useEffect Hook](https://reactjs.org/docs/hooks-effect.html)
+- [Explanation of useEffect](https://dmitripavlutin.com/react-useeffect-explanation/)
+- [Reactstrap Tables](https://reactstrap.github.io/?path=/docs/components-table--table#striped)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Challenge
+```js
+/*
+! Challenge
+    - import useState within this component.
+    - establish a state variable & function for the Title input.
+        - The default value will be an empty string.
+    - connect the input to detail the value of the current state.
+    - establish an event listener to trigger the setState function for the 
+    title input. 
+    
+    - Console log the state variable within the handleSubmit() function
+*/
+```
