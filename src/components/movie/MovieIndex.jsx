@@ -31,7 +31,6 @@ function MovieIndex(props) {
         }
     }
 
-    // fetchMovies();
     useEffect(() => {
         if(props.token) {
             fetchMovies();

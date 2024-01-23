@@ -1,8 +1,11 @@
 import React from 'react'
 import { Button, Table } from 'reactstrap';
 import { baseURL } from '../../environment';
+import { useNavigate } from 'react-router-dom'
 
 function MovieTable(props) {
+
+    const navigate = useNavigate();
 
     async function deleteMovie(id) {
         const url = `${baseURL}/movies/${id}`;
@@ -75,6 +78,10 @@ function MovieTable(props) {
                                     {movie.releaseYear}
                                 </td>
                                 <td>
+                                    <Button 
+                                        onClick={() => navigate(`/movie/update/${movie._id}`)}
+                                        color='warning'
+                                    >Edit</Button>
                                     <Button
                                         onClick={() => deleteMovie(movie._id)}
                                         color='danger'
